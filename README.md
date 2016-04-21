@@ -16,7 +16,7 @@ javascript:(function(){var playerWindow = null;var videoID=DM_CurrentVideoXID;va
 
 - Vimeo only:
 ```javascript
-javascript:(function(){var playerWindow = null;if (playerWindow && !playerWindow.closed) {playerWindow.focus();} else {playerWindow=window.open("data:text/html,<html><body style='margin:0px !important'><iframe src='https://player.vimeo.com/video/36881035#t=3m28s?api=1&autoplay=1&title=0&byline=0' width='640' height='360' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></body></html>",'Floatify-tube',"scrollbars=no,resizable=yes,width=480,height=270");};})();
+javascript:(function(){var playerWindow = null;var videoID=vimeo.clip_page_config.clip.id; var currentTime=vimeo.active_player.currentTime;if (playerWindow && !playerWindow.closed) {playerWindow.focus();} else {playerWindow=window.open('https://player.vimeo.com/video/'+videoID+'#t='+currentTime+'?api=1&autoplay=1&title=0&byline=0','Floatify-tube','scrollbars=no,resizable=yes,width=480,height=270');};})();
 ```
 
 ## Usage
