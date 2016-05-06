@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        Floatify-tube
+// @name        Floatify Tube
 // @namespace   lucien.gauchet@gmail.com
 // @description A floating-tube popout video player
 // @version     1.1.0
