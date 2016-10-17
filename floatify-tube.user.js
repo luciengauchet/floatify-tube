@@ -2,7 +2,7 @@
 // @name        Floatify Tube
 // @namespace   lucien.gauchet@gmail.com
 // @description A floating-tube popout video player
-// @version     1.1.0
+// @version     1.1.1
 // @include *www.youtube.*
 // @include *www.dailymotion.*
 // @include *vimeo.com*
@@ -16,7 +16,7 @@ GM_addStyle(" \
 ");
 
 (function() {
-var createFloatifyPopupYT = "javascript:(function(){var e=null,t=document.getElementById('movie_player'),a=t.getVideoData().video_id,r=t.getCurrentTime();e&&!e.closed?e.focus():(e=window.open(\"data:text/html,<html><body style='margin:0px !important'><div id='ytplayer' style='width:100% !important; height:100% !important'></div><script>var tag = document.createElement('script');tag.src = 'https://www.youtube.com/player_api';var firstScriptTag = document.getElementsByTagName('script')[0];firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);var player;function onYouTubePlayerAPIReady() {player = new YT.Player('ytplayer', {height: '390',width: '640',videoId: '\"+a+\"',events: { 'onReady': onPlayerReady }});}function onPlayerReady(event) {event.target.playVideo();event.target.seekTo('\"+r+\"');}function stopVideo() {player.stopVideo();}</script></body></html>\",'Floatify-tube','scrollbars=no,resizable=yes,width=480,height=270'),t.pauseVideo())})();";   
+var createFloatifyPopupYT = "javascript:(function(){var e=null,t=document.getElementById('movie_player'),a=t.getVideoData().video_id,r=Math.floor(t.getCurrentTime());e&&!e.closed?e.focus():(e=window.open('https://www.youtube.com/embed/'+a+'?autoplay=1&start='+r,'Floatify-tube','scrollbars=no,resizable=yes,width=480,height=270'),t.pauseVideo())})();";
 var createFloatifyPopupDM = "javascript:(function(){var playerWindow = null;var videoID=DM_CurrentVideoXID;var currentTimeHMS= document.querySelector('.dmp_TimeInfo-time').innerHTML;var p = currentTimeHMS.split(':'),s = 0, m = 1;while (p.length > 0) {s += m * parseInt(p.pop(), 10);m *= 60;};var currentTime=s;if (playerWindow && !playerWindow.closed) {playerWindow.focus();} else {playerWindow=window.open('http://www.dailymotion.com/embed/video/'+videoID+'?autoPlay=1&start='+currentTime,'Floatify-tube','scrollbars=no,resizable=yes,width=480,height=270');};})();"
 var createFloatifyPopupVM = "javascript:(function(){var playerWindow = null;var videoID=vimeo.clip_page_config.clip.id; if (vimeo.active_player) {var currentTime=vimeo.active_player.currentTime} else {var currentTime=0};if (playerWindow && !playerWindow.closed) {playerWindow.focus();} else {playerWindow=window.open('https://player.vimeo.com/video/'+videoID+'#t='+currentTime+'?api=1&autoplay=1&title=0&byline=0','Floatify-tube','scrollbars=no,resizable=yes,width=480,height=270');};})();";
 
